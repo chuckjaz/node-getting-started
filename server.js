@@ -1,4 +1,5 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var app = express();
 
 // Book data
@@ -6,6 +7,9 @@ var books = [
     { name: "War and Peace", author: "Leo Tolstoy" },
     { name: "The Count of Monte Cristo", author: "Alexandre Dumas" }
   ];
+
+// Add middle-ware
+app.use(bodyParser.json());
 
 // Add routes
 app.get("/", function(req, res) {
