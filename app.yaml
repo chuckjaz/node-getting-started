@@ -9,6 +9,9 @@ manual_scaling:
 vm_health_check:
   enable_health_check: False
 
+health_check:
+  enable_health_check: False
+
 handlers:
 
 - url: /(.*\.(html|css|js))
@@ -16,4 +19,4 @@ handlers:
   upload: static/(.*\.(html|css|js))
 
 - url: /.*
-  script: app.js
+  script: server.js
