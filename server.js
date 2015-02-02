@@ -24,6 +24,13 @@ app.get("/books/:author", function (req, res) {
   }));
 });
 
+// Create a book with a given name and author
+app.put("/books", function (req, res) {
+  if (!req.body || !req.body.name || !req.body.author) return res.sendStatus(400);
+  books.push({ name: req.body.name, author: req.body.author });
+  res.sendStatus(200);
+});
+
 // Start server
 var server = app.listen(8080, function () {
   console.log('Server running at http://localhost:%s', server.address().port);
