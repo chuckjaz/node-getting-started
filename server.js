@@ -17,6 +17,13 @@ app.get("/books", function (req, res) {
   res.json(books);
 });
 
+// GET /books/Leo%20Tolstoy returns all books where author="Leo Tolstoy"
+app.get("/books/:author", function (req, res) {
+  res.json(books.filter(function (book) {
+    return book.author == req.params.author
+  }));
+});
+
 // Start server
 var server = app.listen(8080, function () {
   console.log('Server running at http://localhost:%s', server.address().port);
