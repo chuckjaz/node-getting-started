@@ -39,7 +39,6 @@ app.get("/books", function (req, res) {
       return entity.data;
     }));
   });
-  res.json(books);
 });
 
 // GET /books/Leo%20Tolstoy returns all books where author="Leo Tolstoy"
