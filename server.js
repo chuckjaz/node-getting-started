@@ -43,7 +43,7 @@ app.get("/books", function (req, res) {
 
 // GET /books/Leo%20Tolstoy returns all books where author="Leo Tolstoy"
 app.get("/books/:author", function (req, res) {
-  findAuthor(req.params.author, function (err, books) {
+  findAuthorBooks(req.params.author, function (err, books) {
     if (err) return res.sendStatus(500);
     res.json(books.map(function (entity) {
       return entity.data;
