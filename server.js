@@ -13,16 +13,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 app.use("/css", express.static("static/css"));
 
-app.engine('handlebars', exhbrs(
-  { defaultLayout: 'main',
-    helpers: {
-      rpt: function (a, options) {
-        return a.map(function(item) {
-          return options.fn(item);
-        }).join("");
-      }
-    }
-  }));
+app.engine('handlebars', exhbrs({ defaultLayout: 'main'}));
 
 app.set('view engine', 'handlebars');
 
@@ -34,6 +25,5 @@ app.post('/add', function (req, res) {
   books.push({ author: req.body.author, title: req.body.title })
   res.redirect('/')
 })
-
 
 app.listen(8080);

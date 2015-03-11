@@ -5,12 +5,12 @@
     <td>Author</td>
     <td>Title</td>
   </tr>
-  {{#rpt books}}
+  {{#each books}}
   <tr>
     <td>{{author}}</td>
     <td>{{title}}</td>
   </tr>
-  {{/rpt}}
+  {{/each}}
 </table>
 
 <form action="/add" method="post">
