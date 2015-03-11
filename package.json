@@ -1,5 +1,10 @@
 {
   "name": "node-getting-started",
   "description": "A simple application to run in GCP",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "dependencies": {
+    "body-parser": "^1.12.0",
+    "express": "^4.12.2",
+    "express-handlebars": "^1.2.2"
+  }
 }

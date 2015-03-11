@@ -1,0 +1,45 @@
+body {
+  font-family: arial;
+}
+h1 {
+  box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
+  border: solid 1px;
+  padding: 5px;
+}
+table.book-list {
+  border: solid 1px;
+  width: 100%;
+}
+table.book-list tr td {
+  margin-right: 10px;
+}
+table.book-list tr:first-child td {
+  font-weight: bold;
+  border-bottom: solid 1px;
+  background-color: #FFF;
+}
+table.book-list tr:nth-child(odd) {
+  background-color: #F0F0F0;
+}
+form {
+  margin-top: 20px;
+  padding: 5px;
+  border: solid 1px;
+  background-color: #F8F8F8;
+  font-size: 90%;
+  box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
+}
+form div {
+  border-bottom: solid 1px;
+}
+form table {
+  margin-top: 5px;
+  font-size: 90%;
+}
+form input[type=edit] {
+  width: 300px;
+}
+form input[type=submit] {
+  background-color: #1010FF;
+  color: #FFFFFF;
+}
