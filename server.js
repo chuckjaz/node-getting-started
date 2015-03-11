@@ -4,8 +4,9 @@ var gcloud = require('gcloud');
 var app = express();
 
 // Initialize the store
-var dataset = gcloud.datastore.dataset({ 
-  projectId: process.env.PROJECT_ID
+var dataset = gcloud.datastore.dataset({
+  projectId: 'chuckj-node-scratch',
+  credentials: require('./keyfile.json')
 });
 
 // Add a book
@@ -26,15 +27,28 @@ function findAuthorBooks(author, cb) {
 // Add middle-ware
 app.use(bodyParser.json());
 
+var lastError;
+
+function recordError(err) {
+  lastError = err.message + "\n" + error.stack;
+}
+
 // Add routes
 app.get("/", function(req, res) {
+  if (lastError) {
+    res.send(lastError);
+    lastError = null;
+  }
   res.send('Hello World!\n');
 });
 
 // GET /books returns all books
 app.get("/books", function (req, res) {
   findAllBooks(function (err, books) {
-    if (err) return res.sendStatus(500);
+    if (err) {
+      recordError(err);
+      return res.sendStatus(500);
+    }
     res.json(books.map(function (entity) {
       return entity.data;
     }));
@@ -43,8 +57,11 @@ app.get("/books", function (req, res) {
 
 // GET /books/Leo%20Tolstoy returns all books where author="Leo Tolstoy"
 app.get("/books/:author", function (req, res) {
-  findAuthor(req.params.author, function (err, books) {
-    if (err) return res.sendStatus(500);
+  findAuthorBooks(req.params.author, function (err, books) {
+    if (err) {
+      recordError(err);
+      return res.sendStatus(500);
+    }
     res.json(books.map(function (entity) {
       return entity.data;
     }));
